@@ -13,12 +13,7 @@
     <script src = "/socket.io/socket.io.js"></script>
 
     <script>
-    let socket = io();
-
-      socket.on("mainTest", function(text) {
-        document.write(text);
-      });
-    socket.emit('test', 'als;dfjl;askdjflkjasfd');
+</script>
     </script>
 
 
@@ -27,6 +22,7 @@
   <body>
     <!-- Create a tag that we will use as the editable area. -->
     <!-- You can use a div tag as well. -->
+    <script src="server.js"></script>
     <div class="container">
         <textarea id="text"></textarea>
     </div>

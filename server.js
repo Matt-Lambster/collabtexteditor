@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
-var server = app.listen(8080);
+var server = require('http').Server(app);
 app.use(express.static('public'));
+server.listen(8080);
 
 var io = require('socket.io')(server);
 let socket;
@@ -19,10 +20,10 @@ function connection(socket) {
     socket.emit('newUser', text);
     socket.on('test', function(data) {
       console.log(data);
-      setup();
+
     });
 
-
+    setup(socket);
     socket.on('text', handleTextSent);
 
     function handleTextSent(data){
@@ -32,8 +33,9 @@ function connection(socket) {
     }
 }
 
-function setup(){
-    socket = io.connect('http://localhost:8080');
+function setup(socket){
+    //socket = io.connect('http://localhost:8080');
+    console.log('donesos');
     socket.emit('mainTest', 'setup running');
 
     $("#text").on("froalaEditor.keyup", function(){
