@@ -10,12 +10,26 @@
     <!-- Include Editor style. -->
     <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+    <script src = "/socket.io/socket.io.js"></script>
+
+    <script>
+    let socket = io();
+
+      socket.on("mainTest", function(text) {
+        document.write(text);
+      });
+    socket.emit('test', 'als;dfjl;askdjflkjasfd');
+    </script>
+
+
   </head>
 
   <body>
     <!-- Create a tag that we will use as the editable area. -->
     <!-- You can use a div tag as well. -->
-    <textarea></textarea>
+    <div class="container">
+        <textarea id="text"></textarea>
+    </div>
 
     <!-- Include external JS libs. -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

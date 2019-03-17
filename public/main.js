@@ -4,7 +4,9 @@ var text = {
 };
 
 function setup(){
-    socket = io.connect('https://lit-everglades-91527.herokuapp.com/'); //|| 'http://localhost:8080');
+    socket = io.connect('http://localhost:8080');
+    socket.emit('mainTest', 'setup running');
+
     $("#text").on("froalaEditor.keyup", function(){
         var html = $(this).froalaEditor('html.get');
         var data = {
@@ -16,7 +18,6 @@ function setup(){
         toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'help', 'html', '|', 'undo', 'redo'],
         fullPage: true
     });
-
     socket.on('text', handleRecievedText);
     socket.on('newUser', updateText);
 }
@@ -37,3 +38,5 @@ function handleRecievedText(data){
     editor.selection.setAtEnd(editor.$el.get(0));
     editor.selection.restore();
 }
+
+exports.setup = setup;
