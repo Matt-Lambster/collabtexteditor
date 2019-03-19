@@ -9,7 +9,7 @@ let socket;
 
 console.log('Server listening on port 8080');
 
-io.on('connection', connection) ;
+io.on('connection', connection);
 
 var text = {
     text: ''
@@ -20,10 +20,8 @@ function connection(socket) {
     socket.emit('newUser', text);
     socket.on('test', function(data) {
       console.log(data);
-
     });
 
-    setup(socket);
     socket.on('text', handleTextSent);
 
     function handleTextSent(data){
