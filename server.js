@@ -20,7 +20,6 @@ function connection(socket) {
 
     socket.on('userEdit', handleTextSent);
     function handleTextSent(data) {
-        console.log('handleTextSent was called.');
         socket.broadcast.emit('receiveEdit', data.change);
         doc.state = data.currentState;
     }
