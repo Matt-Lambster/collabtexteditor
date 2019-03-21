@@ -19,11 +19,12 @@ function connection(socket) {
     socket.emit('newUser', doc.state);
 
     socket.on('userEdit', handleTextSent);
+
     function handleTextSent(data) {
         socket.broadcast.emit('receiveEdit', data.change);
         doc.state = data.currentState;
     }
-    
+
     socket.on('disconnect', function () {
         console.log('Client with id ' + socket.id + ' has disconnected.');
         numClients--;
