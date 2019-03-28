@@ -1,6 +1,12 @@
-let socket = io();
 let quill = new Quill('#editor', {
+    modules: {
+        toolbar: '#toolbar'
+    },
     theme: 'snow'
+});
+
+$('#custom-button').click(function() {
+    alert('Clicked!');
 });
 
 socket.on('newUser', function (currentState) {
@@ -12,7 +18,7 @@ quill.on('text-change', function (delta, oldDelta, source) {
         change: delta,
         currentState: quill.getContents()
     };
-    
+
     if (source === 'user') {
         socket.emit('userEdit', changes);
     }

@@ -7,7 +7,19 @@ let doc = {
 };
 let numClients = 0;
 
-app.use(express.static('public'));
+//For res.render() default path. Not necessary, technically.
+app.set('views', __dirname + '/views');
+
+//Specifies the structure of output document.
+app.set('view engine', 'ejs');
+
+//Serves static files from /public, from /public's perspective (first parameter).
+//Use routers later? If we're building off of this.
+app.use('/public', express.static(__dirname + '/public'));
+
+app.get('/', function (req, res) {
+    res.render('index.ejs');
+});
 
 console.log('Server is now listening on port 8080.');
 io.sockets.on('connection', connection);

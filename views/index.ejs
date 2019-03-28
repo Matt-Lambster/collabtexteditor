@@ -6,21 +6,30 @@
     <!-- Include JQuery -->
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="ejs.min.js"></script>
 
     <!-- Include Quill library, stylesheet -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arial" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Mirza" rel="stylesheet">
 
 
+
+    <link rel="stylesheet" href="font.css">
     <!-- Create the editor container -->
     <div class="container">
-        <div id="editor">
-        </div>
+        <%- include toolbar.ejs %>
+        <div id="editor"></div>
     </div>
 
     <!-- Initialize Quill editor -->
     <script src="/socket.io/socket.io.js"></script>
-    <script src="main.js"> </script>
+    <script src="../public/js/font.js"> </script>
+    <script src="../public/js/main.js"> </script>
+
 </head>
 
 </html>
