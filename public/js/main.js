@@ -1,11 +1,17 @@
+let socket = io();
+
 let quill = new Quill('#editor', {
     modules: {
-        toolbar: '#toolbar'
+        toolbar: {
+            container: '#toolbar',
+            handlers: {}
+        }
     },
-    theme: 'snow'
+    theme: 'snow',
+    placeholder: 'Add text here...'
 });
 
-$('#custom-button').click(function() {
+$('#custom-button').click(function () {
     alert('Clicked!');
 });
 
