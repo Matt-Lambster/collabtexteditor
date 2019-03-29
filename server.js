@@ -5,7 +5,7 @@ let io = require('socket.io')(server);
 let doc = {
     state: ''
 };
-let numClients = 10;
+let numClients = 100;
 
 //For res.render() default path. Not necessary, technically.
 app.set('views', __dirname + '/views');
